@@ -1,4 +1,4 @@
-import { Option } from './index';
+import { Option } from "./index";
 
 /**
  * Wraps a synchronous function that might throw into an Option
@@ -30,7 +30,7 @@ export const wrapAsync = async <T>(promise: Promise<T>): Promise<Option<T>> => {
  */
 export const collect = <T>(options: Option<T>[]): Option<T[]> => {
   const values: T[] = [];
-  
+
   for (const option of options) {
     if (option.isSome()) {
       values.push(option.value);
@@ -38,7 +38,7 @@ export const collect = <T>(options: Option<T>[]): Option<T[]> => {
       return Option.none<T[]>();
     }
   }
-  
+
   return Option.some(values);
 };
 
@@ -48,8 +48,8 @@ export const collect = <T>(options: Option<T>[]): Option<T[]> => {
  */
 export const transpose = <T>(options: Option<T>[]): T[] => {
   return options
-    .filter(option => option.isSome())
-    .map(option => option.value);
+    .filter((option) => option.isSome())
+    .map((option) => option.value);
 };
 
 /**

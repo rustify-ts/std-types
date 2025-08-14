@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { Err, Ok, Result } from "@/index";
 import { collect, wrapAsync, wrapSync } from "@/helpers";
+import { Err, Ok, type Result } from "@/index";
 
 describe("Result helpers", () => {
   describe("wrapSync", () => {

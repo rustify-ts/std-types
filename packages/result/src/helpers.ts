@@ -1,4 +1,4 @@
-import { Result } from './index';
+import { Result } from "./index";
 
 export const wrapAsync = async <T, E = Error>(
   promise: Promise<T>,

@@ -39,10 +39,6 @@ class Result<T, E> {
     return this._error!;
   }
 
-  // Readonly ok property for compatibility
-  get ok(): boolean {
-    return this._isOk;
-  }
 
   // Core methods
   map<U>(fn: (value: T) => U): Result<U, E> {
