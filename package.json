@@ -1,6 +1,6 @@
 {
   "name": "@rustify/std-types",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "TypeScript standard types inspired by Rust",
   "private": true,
   "type": "module",
@@ -37,6 +37,14 @@
     "functional",
     "monorepo"
   ],
-  "author": "",
-  "license": "MIT"
+  "author": "pavi2410",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rustify-ts/std-types.git"
+  },
+  "homepage": "https://github.com/rustify-ts/std-types",
+  "bugs": {
+    "url": "https://github.com/rustify-ts/std-types/issues"
+  }
 }
