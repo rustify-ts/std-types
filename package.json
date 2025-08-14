@@ -1,51 +1,24 @@
 {
-  "name": "@rustify/result",
+  "name": "@rustify/std-types",
   "version": "0.0.1",
-  "description": "Pure TypeScript Result type inspired by Rust's Result",
-  "keywords": [
-    "typescript",
-    "result",
-    "error-handling",
-    "rust",
-    "functional",
-    "monad"
-  ],
+  "description": "TypeScript standard types inspired by Rust",
+  "private": true,
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./helpers": {
-      "types": "./dist/helpers.d.ts",
-      "import": "./dist/helpers.js"
-    }
-  },
-  "sideEffects": false,
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
   "scripts": {
-    "dev": "vite build --watch",
-    "build": "vite build",
-    "test": "vitest run",
-    "test:watch": "vitest --watch",
-    "test:coverage": "vitest run --coverage",
-    "lint": "biome check src tests",
-    "format": "biome format --write src tests",
-    "typecheck": "tsc --noEmit",
-    "prepublishOnly": "pnpm run build && pnpm test"
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "test:watch": "pnpm -r test:watch",
+    "test:coverage": "pnpm -r test:coverage",
+    "lint": "biome check packages/*/src packages/*/tests",
+    "format": "biome format --write packages/*/src packages/*/tests",
+    "typecheck": "pnpm -r typecheck",
+    "dev": "pnpm -r --parallel dev",
+    "clean": "pnpm -r clean"
   },
   "engines": {
     "node": ">=22.0.0"
   },
   "packageManager": "pnpm@10.13.1",
-  "author": "",
-  "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "^2.2.0",
     "@types/node": "^24.2.1",
@@ -54,5 +27,16 @@
     "vite": "^7.1.2",
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^3.2.4"
-  }
+  },
+  "keywords": [
+    "typescript",
+    "rust",
+    "result",
+    "option",
+    "error-handling",
+    "functional",
+    "monorepo"
+  ],
+  "author": "",
+  "license": "MIT"
 }

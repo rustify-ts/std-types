@@ -10,7 +10,6 @@ export default defineConfig({
         index: resolve(__dirname, 'src/index.ts'),
         helpers: resolve(__dirname, 'src/helpers.ts')
       },
-      name: 'Result',
       formats: ['es'],
     },
     sourcemap: true,
