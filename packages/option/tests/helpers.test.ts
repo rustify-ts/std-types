@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { collect, findSome, transpose, wrapAsync, wrapSync } from "@/helpers";
-import { None, type Option, Some } from "@/index";
+import { collect, findSome, transpose, wrapAsync, wrapSync } from "../src/helpers";
+import { None, type Option, Some } from "../src/index";
 
 describe("Option helpers", () => {
   describe("collect", () => {
@@ -12,7 +12,7 @@ describe("Option helpers", () => {
     });
 
     it("returns None if any option is None", () => {
-      const options = [Some(1), None<number>(), Some(3)];
+      const options = [Some(1), None, Some(3)];
       const result = collect(options);
       expect(result.isNone()).toBe(true);
     });
@@ -27,13 +27,13 @@ describe("Option helpers", () => {
 
   describe("transpose", () => {
     it("extracts all Some values", () => {
-      const options = [Some(1), None<number>(), Some(3)];
+      const options = [Some(1), None, Some(3)];
       const result = transpose(options);
       expect(result).toEqual([1, 3]);
     });
 
     it("returns empty array for all None", () => {
-      const options = [None<number>(), None<number>()];
+      const options = [None, None];
       const result = transpose(options);
       expect(result).toEqual([]);
     });
@@ -41,14 +41,14 @@ describe("Option helpers", () => {
 
   describe("findSome", () => {
     it("finds first Some value", () => {
-      const options = [None<number>(), Some(42), Some(84)];
+      const options = [None, Some(42), Some(84)];
       const result = findSome(options);
       expect(result.isSome()).toBe(true);
       expect(result.value).toBe(42);
     });
 
     it("returns None if no Some found", () => {
-      const options = [None<number>(), None<number>()];
+      const options = [None, None];
       const result = findSome(options);
       expect(result.isNone()).toBe(true);
     });

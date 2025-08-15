@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { None, Option, Some } from "@/index";
+import { None, Option, Some } from "../src/index";
 
 describe("Option", () => {
   describe("creation", () => {
@@ -11,7 +11,7 @@ describe("Option", () => {
     });
 
     it("creates None value", () => {
-      const opt = None<number>();
+      const opt = None;
       expect(opt.isSome()).toBe(false);
       expect(opt.isNone()).toBe(true);
     });
@@ -42,7 +42,7 @@ describe("Option", () => {
     });
 
     it("maps None value", () => {
-      const opt = None<number>();
+      const opt = None;
       const mapped = opt.map((x) => x * 2);
       expect(mapped.isNone()).toBe(true);
     });
@@ -54,7 +54,7 @@ describe("Option", () => {
     });
 
     it("mapOr with None", () => {
-      const opt = None<number>();
+      const opt = None;
       const result = opt.mapOr(0, (x) => x * 2);
       expect(result).toBe(0);
     });
@@ -69,7 +69,7 @@ describe("Option", () => {
     });
 
     it("mapOrElse with None", () => {
-      const opt = None<number>();
+      const opt = None;
       const result = opt.mapOrElse(
         () => 0,
         (x) => x * 2,
@@ -89,13 +89,13 @@ describe("Option", () => {
 
     it("and with Some and None", () => {
       const opt1 = Some(42);
-      const opt2 = None<string>();
+      const opt2 = None;
       const result = opt1.and(opt2);
       expect(result.isNone()).toBe(true);
     });
 
     it("and with None and Some", () => {
-      const opt1 = None<number>();
+      const opt1 = None;
       const opt2 = Some("hello");
       const result = opt1.and(opt2);
       expect(result.isNone()).toBe(true);
@@ -109,21 +109,21 @@ describe("Option", () => {
     });
 
     it("andThen with None", () => {
-      const opt = None<number>();
+      const opt: Option<number> = None;
       const result = opt.andThen((x) => Some(x.toString()));
       expect(result.isNone()).toBe(true);
     });
 
     it("or with Some and None", () => {
       const opt1 = Some(42);
-      const opt2 = None<number>();
+      const opt2 = None;
       const result = opt1.or(opt2);
       expect(result.isSome()).toBe(true);
       expect(result.value).toBe(42);
     });
 
     it("or with None and Some", () => {
-      const opt1 = None<number>();
+      const opt1 = None;
       const opt2 = Some(42);
       const result = opt1.or(opt2);
       expect(result.isSome()).toBe(true);
@@ -138,7 +138,7 @@ describe("Option", () => {
     });
 
     it("orElse with None", () => {
-      const opt = None<number>();
+      const opt = None;
       const result = opt.orElse(() => Some(0));
       expect(result.isSome()).toBe(true);
       expect(result.value).toBe(0);
@@ -160,7 +160,7 @@ describe("Option", () => {
     });
 
     it("filters None value", () => {
-      const opt = None<number>();
+      const opt = None;
       const filtered = opt.filter((x) => x > 10);
       expect(filtered.isNone()).toBe(true);
     });
@@ -173,7 +173,7 @@ describe("Option", () => {
     });
 
     it("throws when unwrapping None", () => {
-      const opt = None<number>();
+      const opt = None;
       expect(() => opt.unwrap()).toThrow("Called unwrap on a None value");
     });
 
@@ -183,7 +183,7 @@ describe("Option", () => {
     });
 
     it("unwrapOr with None", () => {
-      const opt = None<number>();
+      const opt = None;
       expect(opt.unwrapOr(0)).toBe(0);
     });
 
@@ -193,7 +193,7 @@ describe("Option", () => {
     });
 
     it("unwrapOrElse with None", () => {
-      const opt = None<number>();
+      const opt = None;
       expect(opt.unwrapOrElse(() => 0)).toBe(0);
     });
 
@@ -203,7 +203,7 @@ describe("Option", () => {
     });
 
     it("expect with None throws with message", () => {
-      const opt = None<number>();
+      const opt = None;
       expect(() => opt.expect("should have value")).toThrow(
         "should have value",
       );
@@ -217,7 +217,7 @@ describe("Option", () => {
     });
 
     it("converts None to nullable", () => {
-      const opt = None<number>();
+      const opt = None;
       expect(opt.toNullable()).toBe(null);
     });
 
@@ -227,7 +227,7 @@ describe("Option", () => {
     });
 
     it("converts None to undefined", () => {
-      const opt = None<number>();
+      const opt = None;
       expect(opt.toUndefined()).toBe(undefined);
     });
   });

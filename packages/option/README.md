@@ -19,7 +19,7 @@ import { Option, Some, None } from '@rustify/option';
 
 // Creating Options
 const someValue = Some(42);
-const noValue = None();
+const noValue = None;
 
 // Type guards
 if (someValue.isSome()) {
@@ -40,7 +40,7 @@ if (noValue.isNone()) {
 const option = Some(value);
 
 // Create None variant
-const option = None();
+const option = None;
 
 // From nullable values
 const option = Option.fromNullable(nullableValue);
@@ -87,7 +87,7 @@ option.filter(x => x > 10);
 ```typescript
 const option1 = Some(1);
 const option2 = Some(2);
-const none = None();
+const none = None;
 
 // Returns second option if first is Some, otherwise None
 option1.and(option2); // Some(2)
@@ -112,16 +112,6 @@ option.toNullable();  // T | null
 option.toUndefined(); // T | undefined
 ```
 
-## Helper Functions
-
-```typescript
-import { some, none } from '@rustify/option/helpers';
-
-// Convenience functions (from helpers module)
-const result1 = some(42);      // Same as Some(42)
-const result2 = none();        // Same as None()
-```
-
 ## Examples
 
 ### Parsing with Option
@@ -129,7 +119,7 @@ const result2 = none();        // Same as None()
 ```typescript
 function parseInteger(str: string): Option<number> {
   const parsed = parseInt(str, 10);
-  return isNaN(parsed) ? None() : Some(parsed);
+  return isNaN(parsed) ? None : Some(parsed);
 }
 
 const result = parseInteger("42")
@@ -160,7 +150,7 @@ if (evenNumber.isSome()) {
 
 ```typescript
 function safeDivide(a: number, b: number): Option<number> {
-  return b === 0 ? None() : Some(a / b);
+  return b === 0 ? None : Some(a / b);
 }
 
 const result = Some(10)

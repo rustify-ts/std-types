@@ -10,8 +10,8 @@ class Option<T> {
     return new Option<T>(true, value);
   }
 
-  static none<T = never>(): Option<T> {
-    return new Option<T>(false, undefined);
+  static get none(): Option<never> {
+    return new Option<never>(false, undefined);
   }
 
   // Type guards
@@ -36,7 +36,7 @@ class Option<T> {
     if (this._isSome) {
       return Option.some(fn(this._value!));
     }
-    return Option.none<U>();
+    return Option.none;
   }
 
   mapOr<U>(defaultValue: U, fn: (value: T) => U): U {
@@ -57,24 +57,24 @@ class Option<T> {
     if (this._isSome) {
       return other;
     }
-    return Option.none<U>();
+    return Option.none;
   }
 
   andThen<U>(fn: (value: T) => Option<U>): Option<U> {
     if (this._isSome) {
       return fn(this._value!);
     }
-    return Option.none<U>();
+    return Option.none;
   }
 
-  or(other: Option<T>): Option<T> {
+  or<U>(other: Option<U>): Option<T | U> {
     if (this._isSome) {
       return this;
     }
     return other;
   }
 
-  orElse(fn: () => Option<T>): Option<T> {
+  orElse<U>(fn: () => Option<U>): Option<T | U> {
     if (this._isSome) {
       return this;
     }
@@ -85,7 +85,7 @@ class Option<T> {
     if (this._isSome && predicate(this._value!)) {
       return this;
     }
-    return Option.none<T>();
+    return Option.none;
   }
 
   unwrap(): T {
@@ -127,7 +127,7 @@ class Option<T> {
 
   // Static factory from nullable
   static fromNullable<T>(value: T | null | undefined): Option<T> {
-    return value != null ? Option.some(value) : Option.none<T>();
+    return value != null ? Option.some(value) : Option.none;
   }
 }
 

@@ -37,7 +37,7 @@ import { Option, Some, None } from '@rustify/option';
 
 // Create options
 const value = Some(42);
-const empty = None();
+const empty = None;
 
 // Safe operations
 const doubled = value.map(x => x * 2); // Some(84)

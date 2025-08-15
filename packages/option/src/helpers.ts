@@ -8,7 +8,7 @@ export const wrapSync = <T>(fn: () => T): Option<T> => {
     const value = fn();
     return Option.some(value);
   } catch {
-    return Option.none<T>();
+    return Option.none;
   }
 };
 
@@ -20,7 +20,7 @@ export const wrapAsync = async <T>(promise: Promise<T>): Promise<Option<T>> => {
     const value = await promise;
     return Option.some(value);
   } catch {
-    return Option.none<T>();
+    return Option.none;
   }
 };
 
@@ -35,7 +35,7 @@ export const collect = <T>(options: Option<T>[]): Option<T[]> => {
     if (option.isSome()) {
       values.push(option.value);
     } else {
-      return Option.none<T[]>();
+      return Option.none;
     }
   }
 
@@ -61,5 +61,5 @@ export const findSome = <T>(options: Option<T>[]): Option<T> => {
       return option;
     }
   }
-  return Option.none<T>();
+  return Option.none;
 };
