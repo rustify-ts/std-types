@@ -1,6 +1,6 @@
 {
   "name": "@rustify/option",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Pure TypeScript Option type inspired by Rust's Option",
   "keywords": [
     "typescript",
